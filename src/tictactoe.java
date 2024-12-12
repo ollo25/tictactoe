@@ -6,6 +6,8 @@ public class tictactoe {
         Scanner sc = new Scanner(System.in);
         int numeroCaseJoue=0;
         int historiqueCaseUtilise=0;
+        String dernierJoueur;
+        boolean repetetion = true;
 
         // CODE
         System.out.print("Joueur 1 (la croix): ");
@@ -30,7 +32,6 @@ public class tictactoe {
 
 
 
-
             if (i % 2 == 1) {
                 System.out.print("Ou veut tu mettre ta croix "+joueur1+": ");
                 numeroCaseJoue = sc.nextInt();
@@ -39,7 +40,18 @@ public class tictactoe {
                     System.out.print("Ou veut-tu mettre ton rond "+joueur2+": ");
                     numeroCaseJoue = sc.nextInt();
                 }
-                historiqueCaseUtilise =+ numeroCaseJoue;
+                /*
+                while (repetetion=true){
+                    for (int j = 0; j <= 2; j++) {
+                        for (int k = 0; k <= 2; k++) {
+                            if (tictactoe[j][k] != 'O' && tictactoe[j][k] != 'X') {
+                                System.out.println("Case deja complete, veuillez resaisir le numéro d'une case vierge");
+                                numeroCaseJoue = sc.nextInt();
+                            }
+                        }
+                        }
+                    }
+                */
                 switch (numeroCaseJoue) {
                     case 1:
                         tictactoe[0][0] = 'X';
@@ -69,10 +81,12 @@ public class tictactoe {
                         tictactoe[2][2] = 'X';
                         break;
                 }
+                dernierJoueur = joueur1;
             }
             else{
                 System.out.print("Ou veut-tu mettre ton rond "+joueur2+": ");
                 numeroCaseJoue = sc.nextInt();
+
                 while (numeroCaseJoue < 1 || numeroCaseJoue > 9) {
                     System.out.println("Le nombre saisi n'est pas correct, veuillez saisir un chiffre compris entre 1 et 9");
                     System.out.print("Ou veut-tu mettre ton rond "+joueur2+": ");
@@ -108,9 +122,35 @@ public class tictactoe {
                         tictactoe[2][2] = 'O';
                         break;
                 }
+                dernierJoueur = joueur2;
             }
 
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+            if ((tictactoe[0][0]=='X' && tictactoe[0][1]=='X' && tictactoe[0][2]=='X') ||(tictactoe[0][0]=='O' && tictactoe[0][1]=='O' && tictactoe[0][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[1][0]=='X' && tictactoe[1][1]=='X' && tictactoe[1][2]=='X') ||(tictactoe[0][0]=='O' && tictactoe[1][1]=='O' && tictactoe[1][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[2][0]=='X' && tictactoe[2][1]=='X' && tictactoe[2][2]=='X') ||(tictactoe[2][0]=='O' && tictactoe[2][1]=='O' && tictactoe[2][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[0][0]=='X' && tictactoe[1][0]=='X' && tictactoe[2][0]=='X') || (tictactoe[0][0]=='O' && tictactoe[1][0]=='O' && tictactoe[2][0]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[0][1]=='X' && tictactoe[1][1]=='X' && tictactoe[2][1]=='X') ||(tictactoe[0][1]=='O' && tictactoe[1][1]=='O' && tictactoe[2][1]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[0][2]=='X' && tictactoe[1][2]=='X' && tictactoe[2][2]=='X') ||(tictactoe[0][2]=='O' && tictactoe[1][2]=='O' && tictactoe[2][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[1][1]=='X' && tictactoe[2][2]=='X' && tictactoe[3][3]=='X') ||(tictactoe[0][0]=='O' && tictactoe[1][1]=='O' && tictactoe[2][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
+            if ((tictactoe[2][0]=='X' && tictactoe[1][1]=='X' && tictactoe[0][2]=='X') ||(tictactoe[2][0]=='O' && tictactoe[1][1]=='O' && tictactoe[0][2]=='O')){
+                System.out.println("Bien Joué "+dernierJoueur+", tu as gagné le tictactoe.");
+            }
         }
     }
 }
